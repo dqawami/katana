@@ -20,6 +20,8 @@ namespace tsuba {
 class RDGManifest;
 class RDGCore;
 
+enum class NodeEdge { kNode = 10, kEdge, kNeitherNodeNorEdge };
+
 /// A read-only contiguous piece of a partition.
 ///
 /// This class owns a contiguous slice of nodes from the associated default CSR

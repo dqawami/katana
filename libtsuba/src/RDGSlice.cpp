@@ -34,8 +34,8 @@ load_metadata_array(
 
   std::vector<tsuba::PropStorageInfo*> prop_infos{prop_info};
   KATANA_CHECKED(AddProperties(
-      core->rdg_dir(), tsuba::NodeEdge::kNeitherNodeNorEdge, nullptr, nullptr,
-      prop_infos, nullptr, [&core](const std::shared_ptr<arrow::Table>& props) {
+      core->rdg_dir(), nullptr, nullptr, prop_infos, nullptr,
+      [&core](const std::shared_ptr<arrow::Table>& props) {
         return core->AddPartitionMetadataArray(props);
       }));
 
@@ -294,8 +294,7 @@ tsuba::RDGSlice::DoMake(
 
   KATANA_CHECKED_CONTEXT(
       AddProperties(
-          metadata_dir, tsuba::NodeEdge::kNeitherNodeNorEdge, nullptr, nullptr,
-          load_now, &grp,
+          metadata_dir, nullptr, nullptr, load_now, &grp,
           [rdg = this](const std::shared_ptr<arrow::Table>& props) {
             return rdg->core_->AddPartitionMetadataArray(props);
           }),
